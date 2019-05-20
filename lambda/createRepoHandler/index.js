@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const { getSecrets } = require('./secrets-helper.js');
 const { startExecution } = require('./stepfunction-helper.js');
 const secretName = process.env.SECRET_NAME;
+const stateMachineArn = process.env.GITEE_STATE_MACHINE;
 
 const sign = (algorithm, secret, buffer) => {
   const hmac = crypto.createHmac(algorithm, secret);
@@ -47,7 +48,8 @@ exports.handler = async(event) => {
     const accountID = callerIdentity.Account;
     
     var props = {};
-    props.stateMachineArn = `arn:aws:states:us-east-1:${accountID}:stateMachine:gitee-webhook`;
+    //props.stateMachineArn = `arn:aws:states:us-east-1:${accountID}:stateMachine:gitee-webhook`;
+    props.stateMachineArn = stateMachineArn;
     props.input = JSON.stringify(res);
     res.job = await startExecution(props);
   }
