@@ -12,7 +12,7 @@ const stepfunctions = require('@aws-cdk/aws-stepfunctions');
 const createCodeBuildStatement = () => {
   const statement = new iam.PolicyStatement(iam.PolicyStatementEffect.Allow);
   statement
-    .addActions(['codebuild:*'])
+    .addActions(['codebuild:*', 'iam:PassRole'])
     .addAllResources();
   return statement;
 }
@@ -71,7 +71,7 @@ class GiteeWebhookStack extends cdk.Stack {
       definition,
       timeoutSec: 300
     });
-    const arnStateMachine = stateMachine.role.roleArn;
+    const arnStateMachine = stateMachine.stateMachineArn;
 
     //API Gateway
     const createRepoHandler = new lambda.Function(this, 'createRepoHandler', {
