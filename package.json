@@ -1,0 +1,24 @@
+{
+  "name": "cdk_gitee_webhook",
+  "version": "0.1.0",
+  "scripts": {
+    "setup": "npm install",
+    "list": "./node_modules/aws-cdk/bin/cdk list",
+    "cdk": "./node_modules/aws-cdk/bin/cdk",
+    "deploy": "./node_modules/aws-cdk/bin/cdk deploy",
+    "synth": "./node_modules/aws-cdk/bin/cdk synth --output synth",
+    "destroy": "./node_modules/aws-cdk/bin/cdk destroy"
+  },
+  "devDependencies": {
+    "aws-cdk": "^0.31.0"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-codebuild": "^0.31.0",
+    "@aws-cdk/aws-lambda": "^0.31.0",
+    "@aws-cdk/aws-apigateway": "^0.31.0",
+    "@aws-cdk/aws-stepfunctions": "^0.31.0",
+    "@aws-cdk/aws-iam": "^0.31.0",
+    "@aws-cdk/cdk": "^0.31.0",
+    "source-map-support": "^0.5.9"
+  }
+}

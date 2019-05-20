@@ -1,0 +1,6 @@
+{
+  "app": "node app/index.js",
+  "requireApproval": "never",
+  "context": {
+  }
+}
