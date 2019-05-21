@@ -1,6 +1,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 
 const AWS = require('aws-sdk');
+const { createIAMRole } = require('./iamRole-helper.js');
+
 var codebuild = undefined;
 
 const artifacts = (options) => {
