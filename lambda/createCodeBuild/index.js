@@ -1,5 +1,6 @@
 const AWS = require("aws-sdk");
 const { createCodeBuild } = require('./codebuild-helper.js');
+const { createIAMRole } = require('./iamRole-helper.js');
 
 /**
  * @input {org, repo, location}
@@ -11,10 +12,10 @@ exports.handler = async (event, context, callback) => {
 
   var props = JSON.parse(JSON.stringify(event));
   const projectName = props.org + "_" + props.repo;
-  const roleArn = await createCodeBuild({projectName: projectName});
-  // props.role = `arn:aws:iam::${accountID}:role/codebuild-execution-full-access`;
-  console.log(roleArn);
-  props.role = roleArn;
+  //const roleArn = await createIAMRole({projectName: projectName});
+  props.role = `arn:aws:iam::${accountID}:role/codebuild-execution-full-access`;
+  //console.log(roleArn);
+  //props.role = roleArn;
   props.accountID = accountID.toString();
   props.projectName = projectName;
 

@@ -38,7 +38,7 @@ const createIAMRole = (options) => {
   };
   
   const roleParams = {
-    AssumeRolePolicyDocument: trust_policy,
+    AssumeRolePolicyDocument: JSON.toString(trust_policy),
     Path: "/", 
     RoleName: `codebuild_${options.projectName}_Role`    
   };
@@ -55,7 +55,7 @@ const createIAMRole = (options) => {
         const roleName = data.Role.RoleName;
         const roleArn = data.Role.Arn;
         const rolePolicyParams = {
-          PolicyDocument: policy,
+          PolicyDocument: JSON.toString(policy),
           PolicyName: `codebuild_${options.projectName}_Policy`,
           RoleName: roleName
         };
